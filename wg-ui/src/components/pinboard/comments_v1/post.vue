@@ -1,57 +1,53 @@
 <template>
-    <div class="post">
-        <v-card elevation="10" max-width="100%">
-            <v-card-title>
-                {{ post.postTitle }}
-            </v-card-title>
-            <v-card-text>
-                {{post.postContent}}
-            </v-card-text>
-        </v-card>
-        <comments
-                :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
-                :comments="comments"
-                :current_user="current_user"
-                @submit-comment="submitComment"
-        ></comments>
+    <div>
+        <form @submit="addPost">
+            <input type="text" v-model="title" name="title" placeholder="Urgent">
+            <input type="text" v-model="content" name="content" placeholder="Hi, I...">
+            <input type="submit" value="Submit" class="btn">
+        </form>
     </div>
 </template>
 
 <script>
     export default {
-        name: "message",
-
-        data(){
-            return{
-                postId: 1,
+        name: "post",
+        components: {},
+        data() {
+            return {
+                //postId: 1,
                 postAuthor: 'Peter',
-                postTitle: 'Hi friends!',
-                postContent: 'Who wants to go to the beach tomorrow?',
-                postTimeDate: '06.06.2020, 13:00',
-                comments: [
-                    {
-                        commentAuthor: 'Clara',
-                        commentContent: 'Me!',
-                        commentTimeDate: '06.06.2020, 13:30',
-                    }
-                ]
+                postTitle: '',
+                postContent: '',
+                postTimeDate: '',
+                comments: []
             }
         },
-        
+
         methods: {
             // On hitting submit, calls this function and then emits the event
-            addTodo(e) {
+            addPost(e) {
                 // Stops the form to submit to a file, and instead calls our method
                 e.preventDefault();
 
-                const newTodo = {
-                    title: this.title,
-                    completed: false
-                }
-                this.$emit('add-todo', newTodo);
+                const today = new Date();
+                const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                const dateTime = date + ' ' + time;
 
-                this.title = ""; // clears the input field
+                console.log(this.title, this.content, dateTime);
+
+                const newPost = {
+                    postTitle: this.title,
+                    postContent: this.content,
+                    postTimeDate: dateTime
+                }
+                this.$emit('add-newPost', newPost);
+
+                // clears the input field
+                this.title = "";
+                this.content = "";
             }
+        }
     }
 </script>
 

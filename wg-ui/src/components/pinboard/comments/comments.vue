@@ -28,49 +28,24 @@
             </button>
         </div>
     </div>
-
-
 </template>
 
 <script>
     export default {
-        data: function () {
+        name: 'comments',
+        data() {
             return {
-                reply: ''
+                comment: ''
             }
         },
         methods: {
-            //Tell the parent component(main app) that we have a new comment
+        //Tell the parent component(main app) that we have a new comment
             submitComment: function () {
                 if (this.reply != '') {
                     this.$emit('submit-comment', this.reply);
                     this.reply = '';
                 }
             }
-        },
-        //What the component expects as parameters
-        props: ['comments', 'current_user', 'comments_wrapper_classes']
+        }
     }
 </script>
-
-<style scoped>
-    .todo-item {
-        background: #f4f4f4;
-        padding: 10px;
-        border-bottom: 1px #ccc dotted;
-    }
-
-    .is-complete {
-        text-decoration: line-through;
-    }
-
-    .del {
-        background: #ff0000;
-        color: #fff;
-        border: none;
-        padding: 5px 9px;
-        border-radius: 50%;
-        cursor: pointer;
-        float: right;
-    }
-</style>
