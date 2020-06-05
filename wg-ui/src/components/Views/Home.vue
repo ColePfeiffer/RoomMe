@@ -3,6 +3,12 @@
         <!--        <h1>-->
         <!--            <v-icon color="#ffffff">mdi-home</v-icon>-->
         <!--        </h1>-->
+
+        <post v-on:add-todo="addPost"/>
+        <login/>
+        <Register/>
+        <Posts/>
+
         <v-carousel
                 height="400"
                 hide-delimiter-background
@@ -42,6 +48,7 @@
                 </v-sheet>
             </v-carousel-item>
         </v-carousel>
+
 
         <div class="comments">
             <v-layout col justify-space-between>
@@ -230,7 +237,13 @@
 </template>
 
 <script>
+    import firebaseInit from "../firebaseInit";
+    import post from "../pinboard/comments_v1/post";
+    import Login from "../Login";
+    import Register from "../Register";
+    import Posts from "../pinboard/Posts";
     import axios from "axios";
+    //import firebaseConfig from "../firebaseConfig";
 
     export default {
         /*
@@ -238,6 +251,12 @@
             document.body.className = 'home';
         },*/
         name: 'Home',
+        components: {
+          Login,
+            Register,
+            post,
+            Posts
+        },
 
         // Leer
         data() {
@@ -303,6 +322,7 @@
             }
         },
         created() {
+            firebaseInit()
         }
     }
 </script>

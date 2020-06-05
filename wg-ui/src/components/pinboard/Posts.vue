@@ -1,23 +1,41 @@
 <template>
     <div class="hello">
-        <!-- For-each
-        todo is the singular name of each object, v-bind:key points to it's ID, making it unique. However it would also work using v-bind:key="todo" -->
-        <div v-bind:key="todo.id" v-for="todo in todos">
-            <!-- <h3>{{todo.title}}</h3> -->
-            <!-- We are catching the event the other component sends
-            and fire it once more, so it reaches App.vue -->
-            <TodoItem v-bind:todo="todo" v-on:del-todo="$emit('del-todo', todo.id)"/>
-        </div>
+        Blabla
     </div>
 </template>
 
 <script>
-    import TodoItem from "./TodoItem.vue";
+    //import post from "./comments_v1/post.vue";
+    import db from '../firebaseInit'
 
     export default {
-        name: 'Todos',
+        name: 'Posts',
         components: {
-            TodoItem
+
+        },
+        data(){
+            return{
+                postings: []
+            }
+        },
+        created() {
+            db.collection('postings').get().then(
+                querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        console.log(doc.data())
+                        const data = {
+                            'author': doc.data(),
+                            'title': doc.data().title,
+                            'content': doc.data().content,
+                            'timeDate': doc.data().timeDate
+                        }
+                        // Packt die erhaltenen Daten in unser Postings-Array
+                    this.postings.push(data)
+                        console.log(this.postings)
+                    })
+
+                }
+            )
         },
         props: ["todos"]
     }

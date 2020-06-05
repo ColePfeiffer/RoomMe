@@ -116,7 +116,7 @@
 
 </script>
 
-<style scoped>
+<style>
     .header {
         background: #333;
         color: #fff;
@@ -130,12 +130,23 @@
     }
 
     .content {
-        color: #F6F0F1;
+        color: #ddd;
         background-color: #315458;
     }
 
     .content h1 {
         color: #CE9242;
+    }
+
+    .register, .login {
+        padding: 15px;
+        margin: 5px;
+        background: black;
+    }
+
+    button{
+        color: #FFFD70;
+        background: #FFFD70;
     }
 
 </style>

@@ -1,14 +1,33 @@
 <template>
     <div id="app">
-        <!--        catch emit-->
-        <AddTodo v-on:add-todo="addTodo"/>
-        <!--
-          v-bind: We are passing our data sas a prop to the component using v-bind
-          v-on: We are catching an event that was sent-off and call a method.
+        <v-card
+                class="mx-auto"
+                max-width="500">
 
-          -->
-        <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
-        Blabla
+            <!--        catch emit-->
+            <AddTodo v-on:add-todo="addTodo"/>
+            <!--
+              v-bind: We are passing our data sas a prop to the component using v-bind
+              v-on: We are catching an event that was sent-off and call a method.
+
+              -->
+            <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+        </v-card>
+
+        <v-card
+                class="mx-auto"
+                max-width="500">
+
+            <!--        catch emit-->
+            <AddTodo v-on:add-todo="addTodo"/>
+            <!--
+              v-bind: We are passing our data sas a prop to the component using v-bind
+              v-on: We are catching an event that was sent-off and call a method.
+
+              -->
+            <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+        </v-card>
+
 
     </div>
 </template>
