@@ -1,3 +1,4 @@
+<script src="../../main.js"></script>
 <template>
     <v-container class="home" fluid>
         <!--        <h1>-->
