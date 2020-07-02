@@ -1,4 +1,5 @@
 <template>
+<!--    Formular Beginn-->
     <v-form v-model="userSettings">
         <v-container>
             <v-column>
@@ -7,12 +8,23 @@
                         md="4"
                 >
                     <div class ="settings">
-                        <v-img v-if="showUploadAction"
+<!--                       change is an event-listener-->
+<!--                        it triggers, whenever a user selects a new file-->
+                        <input
+                                style="display:none"
+                                type="file"
+                                @change="onFileSelected"
+                                ref="fileInput">
+<!--                        ref sets a reference to a different element (for example a button) and re-directs the click to this element-->
+                        <button type="button" class="btn btn-success" @click="$refs.fileInput.click()">Pick file</button>
+
+                        <v-img id="profilePicture"
                             max-width= 200
                             max-height= 200
-                            src="@/assets/placeholder.png"
-                               @change="onFileSelected"></v-img>
+                               :src = "selectedFile"></v-img>
+<!--                        change tells src to change based on onFileSelected-->
 
+<!--                        Upload-Function-->
                         <input type="file" @change="onFileSelected">
                         <button @click="onUpload">Upload</button></div>
 
@@ -70,22 +82,23 @@
 
             // will return objects:
             return {
+                selectedFile: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+
                 showUploadAction: true,
                 username: "",
                 bio: "",
                 livingHereSince: "",
-                selectedFile: null,
                 placeholder: null,
             }
         },
         methods: {
-            uploadImageClick() {
-                this.showUploadAction = false;
-            },
             onFileSelected(event) {
-                // File that user selects:
-                this.selectedFile = event.target.files[0]
+                // event.target.files[0]: our selected file (comes in an array for multi selection)
+                this.selectedFile = event.target.files[0] // changes our stored variable to the new file
                 console.log(event)
+            },
+            onUpload(){
+
             },
             saveUserInput(username) {
                 this.username = username;
