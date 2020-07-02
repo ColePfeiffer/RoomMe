@@ -4,23 +4,47 @@
                 v-model="drawer"
                 app
                 clipped
+                color="#241c24"
+                expand-on-hover
+                dark
         >
             <v-list dense>
                 <v-list-item to="/Home">
                     <v-list-item-action>
                         <v-icon>mdi-home</v-icon>
                     </v-list-item-action>
-
                     <v-list-item-content>
                         <v-list-item-title>Home</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item to="/Todo">
+
+
+                <v-list-item to="/MeineWG">
                     <v-list-item-action>
-                        <v-icon>mdi-pencil</v-icon>
+                        <v-icon>mdi-account-switch</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                        <v-list-item-title>ToDo</v-list-item-title>
+                        <v-list-item-title>Meine WG</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+
+                <v-list-item to="/Einkaufen">
+                    <v-list-item-action>
+                        <v-icon>mdi-shopping</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Einkaufen</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+
+                <v-list-item to="/Cleaning">
+                    <v-list-item-action>
+                        <v-icon>mdi-broom</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Putzen</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
@@ -33,6 +57,16 @@
                         <v-list-item-title>Settings</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+
+                <v-list-item to="/Todo">
+                    <v-list-item-action>
+                        <v-icon>mdi-pencil</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>ToDo</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
             </v-list>
         </v-navigation-drawer>
 
@@ -85,7 +119,7 @@
 
 </script>
 
-<style scoped>
+<style>
     .header {
         background: #333;
         color: #fff;
@@ -99,12 +133,23 @@
     }
 
     .content {
-        color: #F6F0F1;
+        color: #ddd;
         background-color: #315458;
     }
 
     .content h1 {
         color: #CE9242;
+    }
+
+    .register, .login {
+        padding: 15px;
+        margin: 5px;
+        background: black;
+    }
+
+    button{
+        color: #FFFD70;
+        background: #FFFD70;
     }
 
 </style>
