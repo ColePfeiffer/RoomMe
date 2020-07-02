@@ -1,4 +1,5 @@
 <template>
+    <!-- Root element: -->
     <div id="app">
         <!--        catch emit-->
         <AddTodo v-on:add-todo="addTodo"/>
@@ -27,9 +28,12 @@
         },
         // This stores our data
         data() {
+            // will return objects:
             return {
                 // It's accessable by using {{todo}}
-                todos: []
+                todos: [
+
+                ]
             }
         },
         methods: {

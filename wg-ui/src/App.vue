@@ -24,9 +24,10 @@
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item>
+
+                <v-list-item to="/Settings">
                     <v-list-item-action>
-                        <v-icon>mdi-settings</v-icon>
+                        <v-icon>mdi-account</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
                         <v-list-item-title>Settings</v-list-item-title>
@@ -64,6 +65,8 @@
             <div>RoomMe | &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </v-app>
+
+
 </template>
 
 <script>
